@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Student</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="navbar">
     <a href="home.html">Home</a>
@@ -17,25 +17,20 @@
 
   <div class="content">
     <h1>Add New Student</h1>
-    <form action="#" method="post">
-      <label for="student_id">Student ID:</label>
-      <input type="text" id="student_id" placeholder="Enter Student ID" required>
 
-      <label for="last_name">Last Name:</label>
-      <input type="text" id="last_name" placeholder="Enter Last Name" required>
-
-      <label for="first_name">First Name:</label>
-      <input type="text" id="first_name" placeholder="Enter First Name" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Enter Email Address" required>
-
-      <input type="submit" value="Submit">
+    <form id="studentForm">
+      <label>Student ID:</label>
+      <input type="text" id="student_id"><br>
+      <label>Last Name:</label>
+      <input type="text" id="last_name"><br>
+      <label>First Name:</label>
+      <input type="text" id="first_name"><br>
+      <label>Email:</label>
+      <input type="email" id="email"><br>
+      <button type="submit">Submit</button>
     </form>
   </div>
 
-
-  <script src="validation.js"></script>
-
+  <script src="addStudent.js"></script>
 </body>
 </html>
