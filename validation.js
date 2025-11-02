@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isValid) return;
 
-    // ✅ تأكيد الإضافة
+    
     alert(`✅ Student ${firstName} ${lastName} added successfully!`);
 
-    // نفرّغ الفورم
+    
     form.reset();
   });
 });
@@ -70,7 +70,7 @@ document.getElementById("studentForm").addEventListener("submit", function(e) {
 
   if (!valid) return;
 
-  // ✅ Exercise 3: Add new student dynamically
+
   const newStudent = {
     id: id.value,
     last: last.value,

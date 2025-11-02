@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const rows = document.querySelectorAll("#attendanceTable tbody tr");
 
-  // ✅ Exercise 1: Count absences + participation + color + message
+
   rows.forEach(row => {
     const cells = row.querySelectorAll("td");
     let abs = 0, part = 0;
 
-    // Count ✓ for presence (6 sessions)
+    
     for (let i = 4; i <= 9; i++) {
       if (cells[i].textContent.trim() === "✓") part++;
       else abs++;
@@ -15,12 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
     cells[10].textContent = abs + " Abs";
     cells[11].textContent = part + " Par";
 
-    // Color by absences
+    
     if (abs < 3) row.style.backgroundColor = "#b6fcb6"; // green
     else if (abs <= 4) row.style.backgroundColor = "#fff8b6"; // yellow
     else row.style.backgroundColor = "#ffb6b6"; // red
 
-    // Message
+    
     if (abs < 3 && part >= 4)
       cells[12].textContent = "Good attendance – Excellent participation";
     else if (abs >= 3 && abs < 5)
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cells[12].textContent = "Excluded – too many absences – You need to participate more";
   });
 
-  // ✅ Exercise 4: Show report
+  
   document.getElementById("showReport").addEventListener("click", () => {
     const total = rows.length;
     let present = 0, participated = 0;
@@ -59,9 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }]
       }
     });
-  });
-
-  // ✅ Exercise 5: Hover & click row
+  })
   $("table tbody tr").hover(
     function() { $(this).css("background-color", "#e1f5fe"); },
     function() { $(this).css("background-color", ""); }
@@ -73,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     alert(`👤 ${fullName}\nAbsences: ${absences}`);
   });
 
-  // ✅ Exercise 6: Highlight Excellent Students
+  
   $("#highlightBtn").click(() => {
     $("table tbody tr").each(function() {
       const abs = parseInt($(this).find("td:nth-child(11)").text());
