@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Attendance List</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
-  
   <div class="navbar">
     <a href="home.html">Home</a>
     <a href="index.html" class="active">Attendance List</a>
@@ -18,55 +17,101 @@
     <a href="#">Logout</a>
   </div>
 
-  <h1>Attendance List</h1>
+  <div class="content">
+    <h1>Attendance Table</h1>
 
-  
-  <table id="attendanceTable">
-    <thead>
-      <tr>
-        <th>Student ID</th>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Course</th>
-        <th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th>
-        <th>Absences</th>
-        <th>Participation</th>
-        <th>Message</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>001</td><td>Ahmed</td><td>Sara</td><td>Web Dev</td>
-        <td>✓</td><td>✓</td><td></td><td>✓</td><td></td><td>✓</td>
-        <td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>002</td><td>Yacine</td><td>Ali</td><td>CyberSec</td>
-        <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td>
-        <td></td><td></td><td></td>
-      </tr>
-      <tr>
-        <td>003</td><td>Rania</td><td>Houcine</td><td>Networking</td>
-        <td></td><td>✓</td><td></td><td></td><td>✓</td><td></td>
-        <td></td><td></td><td></td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="table-wrapper">
+      <table id="attendanceTable">
+        <thead>
+          <tr>
+            <th rowspan="2">Last Name</th>
+            <th rowspan="2">First Name</th>
+            <th colspan="2">S1</th>
+            <th colspan="2">S2</th>
+            <th colspan="2">S3</th>
+            <th colspan="2">S4</th>
+            <th colspan="2">S5</th>
+            <th colspan="2">S6</th>
+            <th rowspan="2">Absences</th>
+            <th rowspan="2">Participations</th>
+            <th rowspan="2">Message</th>
+          </tr>
+          <tr>
+            <th title="Present">P</th><th title="Participated">Pa</th>
+            <th title="Present">P</th><th title="Participated">Pa</th>
+            <th title="Present">P</th><th title="Participated">Pa</th>
+            <th title="Present">P</th><th title="Participated">Pa</th>
+            <th title="Present">P</th><th title="Participated">Pa</th>
+            <th title="Present">P</th><th title="Participated">Pa</th>
+          </tr>
+        </thead>
 
-  
-  <button id="showReport">Show Report</button>
-  <button id="highlightBtn">Highlight Excellent Students</button>
-  <button id="resetBtn">Reset Colors</button>
+        <tbody>
+          <tr>
+            <td>Ahmed</td>
+            <td>Sara</td>
+            <!-- 12 checkboxes (6 sessions x 2 columns) -->
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
 
-  
-  <div id="reportSection" style="display:none;">
-    <h2>Attendance Report</h2>
-    <p>Total Students: <span id="totalStudents"></span></p>
-    <p>Present: <span id="presentStudents"></span></p>
-    <p>Participated: <span id="participatedStudents"></span></p>
-    <canvas id="reportChart" width="400" height="200"></canvas>
+            <td class="absences"></td>
+            <td class="participations"></td>
+            <td class="message"></td>
+          </tr>
+
+          <tr>
+            <td>Yacine</td>
+            <td>Ali</td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+
+            <td class="absences"></td>
+            <td class="participations"></td>
+            <td class="message"></td>
+          </tr>
+
+          <tr>
+            <td>Houcine</td>
+            <td>Rania</td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+            <td><input type="checkbox"></td><td><input type="checkbox"></td>
+
+            <td class="absences"></td>
+            <td class="participations"></td>
+            <td class="message"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button id="showReport">Show Report</button>
+    <button id="highlightBtn">Highlight Excellent Students</button>
+    <button id="resetBtn">Reset Colors</button>
+
+    <div id="reportSection" class="report-section" style="display:none;">
+      <h2>Attendance Report</h2>
+      <div class="report-stats">
+        <div>Total Students: <span id="totalStudents"></span></div>
+        <div>Present: <span id="presentStudents"></span></div>
+        <div>Participated: <span id="participatedStudents"></span></div>
+      </div>
+      <canvas id="reportChart"></canvas>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="attendance.js"></script>
+  <script src="addStudent.js"></script>
 </body>
 </html>
