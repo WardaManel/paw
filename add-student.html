@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Add Student</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <div class="navbar">
@@ -19,31 +20,24 @@
     <h1>Add New Student</h1>
 
     <form id="studentForm">
-      <div class="form-group">
-        <label for="student_id">Student ID:</label>
-        <input type="text" id="student_id" required>
-      </div>
+      <label for="student_id">Student ID:</label>
+      <input type="text" id="student_id" required>
 
-      <div class="form-group">
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" required>
-      </div>
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" required>
 
-      <div class="form-group">
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" required>
-      </div>
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" required>
 
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-      </div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
 
-      <button type="submit">Submit</button>
+      <button type="submit">Add Student</button>
     </form>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+
   <script src="addStudent.js"></script>
 </body>
 </html>
