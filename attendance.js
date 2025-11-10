@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
-  
+ 
   let students = JSON.parse(localStorage.getItem("students") || "[]");
   students.forEach(student => {
     let row = `<tr>
       <td>${student.last}</td>
       <td>${student.first}</td>
+      <td><input type="checkbox"></td><td><input type="checkbox"></td>
       <td><input type="checkbox"></td><td><input type="checkbox"></td>
       <td><input type="checkbox"></td><td><input type="checkbox"></td>
       <td><input type="checkbox"></td><td><input type="checkbox"></td>
@@ -18,7 +19,7 @@ $(document).ready(function() {
     $("#attendanceTable tbody").append(row);
   });
 
- 
+  
   $("table tbody").on("mouseenter", "tr", function() {
     $(this).css("background-color", "#fef397");
   }).on("mouseleave", "tr", function() {
@@ -28,11 +29,11 @@ $(document).ready(function() {
   
   $("table tbody").on("click", "tr", function() {
     let name = $(this).find("td:nth-child(1)").text() + " " + $(this).find("td:nth-child(2)").text();
-    let absences = $(this).find("td:nth-last-child(3)").text();
+    let absences = $(this).find(".absences").text();
     alert("👤 " + name + " has " + absences + " absences.");
   });
 
-  
+
   $("#showReport").click(function() {
     let total = 0, present = 0, participated = 0;
 
@@ -46,19 +47,19 @@ $(document).ready(function() {
         else absences++;
       });
 
-      $(this).find("td:nth-last-child(3)").text(absences);
-      $(this).find("td:nth-last-child(2)").text(participations);
+      $(this).find(".absences").text(absences);
+      $(this).find(".participations").text(participations);
 
-      
+     
       if (absences >= 5) {
         $(this).css("background-color", "#ff6b6b");
-        $(this).find("td:last").text("❌ Excluded – too many absences – You need to participate more");
+        $(this).find(".message").text("❌ Excluded – too many absences – You need to participate more");
       } else if (absences >= 3) {
         $(this).css("background-color", "#fff475");
-        $(this).find("td:last").text("⚠️ Warning – attendance low – You need to participate more");
+        $(this).find(".message").text("⚠️ Warning – attendance low – You need to participate more");
       } else {
         $(this).css("background-color", "#a6f3a6");
-        $(this).find("td:last").text("✅ Good attendance – Excellent participation");
+        $(this).find(".message").text("✅ Good attendance – Excellent participation");
       }
 
       if (absences < 6) present++;
@@ -70,7 +71,7 @@ $(document).ready(function() {
     $("#participatedStudents").text(participated);
     $("#reportSection").show();
 
-   
+  
     const ctx = document.getElementById("reportChart").getContext("2d");
     new Chart(ctx, {
       type: "bar",
@@ -85,11 +86,56 @@ $(document).ready(function() {
     });
   });
 
-  
+ 
   $("#highlightBtn").click(function() {
     $("#attendanceTable tbody tr").each(function() {
-      let absences = parseInt($(this).find("td:nth-last-child(3)").text());
+      let absences = parseInt($(this).find(".absences").text());
       if (absences < 3) $(this).animate({ backgroundColor: "#9cfd9c" }, 800);
     });
   });
+
+ 
+  $("#resetBtn").click(function() {
+    $("#attendanceTable tbody tr").css("background-color", "");
+  });
+
+  
+ 
+  $("#searchName").on("keyup", function () {
+    const searchValue = $(this).val().toLowerCase();
+    $("#attendanceTable tbody tr").filter(function () {
+      const last = $(this).find("td:nth-child(1)").text().toLowerCase();
+      const first = $(this).find("td:nth-child(2)").text().toLowerCase();
+      $(this).toggle(last.includes(searchValue) || first.includes(searchValue));
+    });
+  });
+
+ 
+  $("#sortAbs").click(function () {
+    const rows = $("#attendanceTable tbody tr").get();
+    rows.sort((a, b) => {
+      const A = parseInt($(a).find(".absences").text()) || 0;
+      const B = parseInt($(b).find(".absences").text()) || 0;
+      return A - B;
+    });
+    $.each(rows, function (_, row) {
+      $("#attendanceTable tbody").append(row);
+    });
+    $("#sortMessage").text("Currently sorted by absences (ascending)");
+  });
+
+ 
+  $("#sortPart").click(function () {
+    const rows = $("#attendanceTable tbody tr").get();
+    rows.sort((a, b) => {
+      const A = parseInt($(a).find(".participations").text()) || 0;
+      const B = parseInt($(b).find(".participations").text()) || 0;
+      return B - A;
+    });
+    $.each(rows, function (_, row) {
+      $("#attendanceTable tbody").append(row);
+    });
+    $("#sortMessage").text("Currently sorted by participation (descending)");
+  });
+
 });
