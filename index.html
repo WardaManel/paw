@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
   <div class="navbar">
     <a href="home.html">Home</a>
     <a href="index.html" class="active">Attendance List</a>
@@ -19,16 +20,17 @@
 
   <div class="content">
     <h1>Attendance Table</h1>
-   
-<label for="searchName">Search by Name:</label>
-<input type="text" id="searchName" placeholder="Type a name...">
 
+    <label for="searchName">Search by Name:</label>
+    <input type="text" id="searchName" placeholder="Type a name...">
 
-<div class="buttons">
-  <button id="sortAbs">Sort by Absences (Ascending)</button>
-  <button id="sortPart">Sort by Participation (Descending)</button>
-</div>
+    <div class="buttons">
+      <button id="sortAbs">Sort by Absences (Ascending)</button>
+      <button id="sortPart">Sort by Participation (Descending)</button>
+    </div>
 
+    <button id="calculateBtn">Calculate Attendance</button>
+    <button id="showReportBtn">Show Report</button>
 
     <div class="table-wrapper">
       <table id="attendanceTable">
@@ -47,27 +49,31 @@
             <th rowspan="2">Message</th>
           </tr>
           <tr>
-            <th title="Present">P</th><th title="Participated">Pa</th>
-            <th title="Present">P</th><th title="Participated">Pa</th>
-            <th title="Present">P</th><th title="Participated">Pa</th>
-            <th title="Present">P</th><th title="Participated">Pa</th>
-            <th title="Present">P</th><th title="Participated">Pa</th>
-            <th title="Present">P</th><th title="Participated">Pa</th>
+            <th>P</th><th>Pa</th>
+            <th>P</th><th>Pa</th>
+            <th>P</th><th>Pa</th>
+            <th>P</th><th>Pa</th>
+            <th>P</th><th>Pa</th>
+            <th>P</th><th>Pa</th>
           </tr>
         </thead>
 
-        <tbody>
+        <tbody id="tableBody">
           <tr>
             <td>Ahmed</td>
             <td>Sara</td>
-          
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+             <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
             <td class="absences"></td>
             <td class="participations"></td>
             <td class="message"></td>
@@ -76,13 +82,18 @@
           <tr>
             <td>Yacine</td>
             <td>Ali</td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+             <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
             <td class="absences"></td>
             <td class="participations"></td>
             <td class="message"></td>
@@ -91,25 +102,27 @@
           <tr>
             <td>Houcine</td>
             <td>Rania</td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-            <td><input type="checkbox"></td><td><input type="checkbox"></td>
-
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+             <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
             <td class="absences"></td>
             <td class="participations"></td>
             <td class="message"></td>
           </tr>
         </tbody>
-        <tbody>
-          
-        </tbody>
+
       </table>
     </div>
 
-    <button id="showReport">Show Report</button>
     <button id="highlightBtn">Highlight Excellent Students</button>
     <button id="resetBtn">Reset Colors</button>
 
@@ -122,12 +135,12 @@
       </div>
       <canvas id="reportChart"></canvas>
     </div>
+
     <p id="sortMessage" style="font-weight:bold; margin-top:10px;"></p>
 
   </div>
 
-
   <script src="attendance.js"></script>
-  <script src="addStudent.js"></script>
+
 </body>
 </html>
