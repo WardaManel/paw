@@ -1,5 +1,5 @@
 <?php
-// Check if the form has been submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $id = $_POST['studentId'];
@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first = $_POST['firstName'];
     $email = $_POST['email'];
 
-    // Save inside a simple text file (for beginners)
+    
     $file = fopen("students.txt", "a");
     fwrite($file, "$id, $last, $first, $email\n");
     fclose($file);
